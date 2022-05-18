@@ -1,4 +1,4 @@
-puts "Введите число месяца:"
+puts "Введите число месяца: "
 day = gets.to_i
 puts "Введите месяц:"
 month = gets.to_i

@@ -10,20 +10,20 @@ loop do
   break if product == "стоп"
 
   puts "Введите цену за единицу товара:"
-  price = gets.chomp.to_i
+  price = gets.to_i
 
   puts "Введите количество товара:"
-  quantity = gets.chomp.to_f
+  quantity = gets.to_f
 
   checklist[product] = {price: price, quantity: quantity}
 
 end
-
+puts checklist
 checklist.each do |product, total_price|
   total = total_price[:price] * total_price[:quantity]
   final_price += total
 
-  puts "Название товара: #{product}, стоимость: #{total}"
+  puts "Стоимость товара #{product}: #{total} рублей."
 
 end
 
