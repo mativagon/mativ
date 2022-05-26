@@ -1,30 +1,30 @@
 class Route
-  def initialize(firstst, lastst)
-    @stations_ls = [firstst, lastst]
+  def initialize(first_station, last_station)
+    @stations = [first_station, last_station]
   end
 
   def add_station(station)
-    @stations_ls.insert(-2, station)
+    @stations.insert(-2, station)
   end
 
-  def rm_station(station)
-    if @stations_ls[0] == station || @stations_ls[-1] == station
+  def remove_station(station)
+    if @stations[0] == station || @stations[-1] == station
       puts "Нельзя удалять начальную и конечную станции маршрута!"
     else
-      station_index = @stations_ls.index(station)
-      @stations_ls.delete_at(station_index)
+      station_index = @stations.index(station)
+      @stations.delete_at(station_index)
     end
   end
 
-  def station_list
-    @stations_ls.each {|station| puts station}
+  def view_stations
+    @stations.each {|station| puts station}
   end
 
-  def first_st
-    @stations_ls.first
+  def first_station
+    @stations.first
   end
 
-  def last_st
-    @stations_ls.last
+  def last_station
+    @stations.last
   end
 end
