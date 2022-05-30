@@ -25,7 +25,9 @@ class Railroad
     puts 'Какой поезд вы хотите создать?'
     puts '1. Пассажирский'
     puts '2. Грузовой'
+
     input = gets.to_i
+
     case input
     when 1
       puts 'Введите номер поезда:'
@@ -65,6 +67,7 @@ class Railroad
 
     puts 'Введите название первой станции:'
     first_station_name = gets.chomp.to_s
+
     puts 'Введите название конечной станции:'
     last_station_name = gets.chomp.to_s
 
@@ -78,12 +81,13 @@ class Railroad
   def add_station_to_route
     puts 'Введите название станции:'
     station_name = gets.chomp.to_s
+
     puts 'Введите название маршрута, в который хотите добавить станцию:'
     route_name = gets.chomp.to_s
 
     station = find_station(station_name)
     route = find_route(route_name)
-    # binding pry
+
     if route
       route.add_station(station)
       puts "В маршрут #{route_name} добавлена станция #{station_name}."
@@ -95,6 +99,7 @@ class Railroad
   def delete_station_from_route
     puts 'Введите название станции:'
     station_name = gets.chomp.to_s
+
     puts 'Введите название маршрута, из которого хотите удалить станцию:'
     route_name = gets.chomp.to_s
 
@@ -112,6 +117,7 @@ class Railroad
   def train_set_route
     puts 'Введите номер поезда:'
     train_number = gets.chomp.to_i
+
     puts 'Введите название маршрута:'
     route_name = gets.chomp.to_s
 
@@ -133,7 +139,9 @@ class Railroad
     puts 'Какой вагон вы хотите создать?'
     puts '1. Пассажирский'
     puts '2. Грузовой'
+
     input = gets.to_i
+
     case input
     when 1
       puts 'Введите номер вагона:'
@@ -165,6 +173,7 @@ class Railroad
   def train_coach_hitch
     puts 'Введите номер вагона.'
     coach_number = gets.to_i
+
     puts 'Введите номер поезда, к которому хотите прицепить вагон.'
     train_number = gets.to_i
 
@@ -185,6 +194,7 @@ class Railroad
   def train_coach_unhitch
     puts 'Введите номер вагона.'
     coach_number = gets.to_i
+
     puts 'Введите номер поезда, от которого хотите отцепить вагон.'
     train_number = gets.to_i
 
@@ -203,10 +213,14 @@ class Railroad
     puts 'Куда ехать поезду?'
     puts '1. Вперед'
     puts '2. Назад'
+
     input = gets.to_i
+
     puts 'Введите номер поезда:'
+
     train_number = gets.to_i
     train = find_train(train_number)
+
     case input
     when 1
       if train
