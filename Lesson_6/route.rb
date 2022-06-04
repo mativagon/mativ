@@ -21,8 +21,8 @@ class Route
   end
 
   def validate!
-    raise 'Нет такой начальной или конечной станции!' unless first_station.is_a?(Station) || last_station.is_a?(Station)
     raise 'Название маршрута должно содержать не менее 3 символов и состоять из букв и цифр!' if name !~ NAME_SAMPLE
+    raise 'Нет такой начальной или конечной станции!' unless first_station.is_a?(Station) || last_station.is_a?(Station)
   end
 
   def self.all
