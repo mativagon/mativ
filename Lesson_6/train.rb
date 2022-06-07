@@ -23,12 +23,6 @@ class Train
     register_instance
   end
 
-  def validate!
-    raise 'Не введён номер поезда!' if number.length < 1
-    raise 'Номер поезда должен содержать не менее 5 символов!' if number.length < 5
-    raise 'Номер поезда должен соответствовать шаблону!' if number !~ NUMBER_SAMPLE
-  end
-
   class << self
     def all
       @@trains
@@ -97,5 +91,9 @@ class Train
 
     current_station_index = @route.view_stations.index(@current_station)
     @route.view_stations[current_station_index + 1]
+  end
+
+  def validate!
+    raise 'Номер поезда должен соответствовать шаблону!' if number !~ NUMBER_SAMPLE
   end
 end

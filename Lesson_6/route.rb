@@ -20,11 +20,6 @@ class Route
     register_instance
   end
 
-  def validate!
-    raise 'Название маршрута должно содержать не менее 3 символов и состоять из букв и цифр!' if name !~ NAME_SAMPLE
-    raise 'Нет такой начальной или конечной станции!' unless first_station.is_a?(Station) || last_station.is_a?(Station)
-  end
-
   def self.all
     @@routes
   end
@@ -52,4 +47,12 @@ class Route
   def last_station
     @stations.last
   end
+
+  protected
+
+  def validate!
+    raise 'Название маршрута должно содержать не менее 3 символов и состоять из букв и цифр!' if name !~ NAME_SAMPLE
+    raise 'Нет такой начальной или конечной станции!' unless first_station.is_a?(Station) || last_station.is_a?(Station)
+  end
+
 end

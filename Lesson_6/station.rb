@@ -20,11 +20,6 @@ class Station
     register_instance
   end
 
-  def validate!
-    raise 'Не введено название станции!' if name.length < 1
-    raise 'Название станции должно содержать не менее 3 символов и состоять из букв и цифр!' if name !~ NAME_SAMPLE
-  end
-
   def self.all
     @@stations
   end
@@ -43,5 +38,11 @@ class Station
 
   def trains_by_type(type)
     @trains.count { |train| train.type == type }
+  end
+
+  protected
+
+  def validate!
+    raise 'Название станции должно содержать не менее 3 символов и состоять из букв и цифр!' if name !~ NAME_SAMPLE
   end
 end

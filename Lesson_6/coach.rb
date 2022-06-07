@@ -8,6 +8,7 @@ class Coach
   include Validating
 
   attr_reader :type, :number
+  NUMBER_SAMPLE = /^([a-z]|\d){3}$/i
 
   def initialize(number)
     @number = number
@@ -15,7 +16,10 @@ class Coach
     validate!
   end
 
+  protected
+
   def validate!
-    raise 'Номер вагона должен содержать не менее 3 символов!' if number.length < 3
+    raise 'Номер вагона должен содержать не менее 3 символов!' if number !~ NUMBER_SAMPLE
   end
+
 end
