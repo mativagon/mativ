@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
-require_relative 'modules/coach_capacity'
-
 class PassengerCoach < Coach
-  include CoachCapacity
 
-  attr_accessor :busy
+  attr_accessor :used_place
 
   def initialize(number, capacity)
     super
     @type = 'passenger'
-    @busy = 0
+  end
+
+  def take_place
+    raise 'Недостаточно места' if self.free_place < 1
+    @used_place += 1
   end
 end

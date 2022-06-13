@@ -266,16 +266,21 @@ class Railroad
   def take_place_or_capacity
     puts 'Введите номер вагона:'
     coach_number = gets.chomp.to_s
-    puts 'Введите количество занимаемых мест или занимаемого объема:'
-    coach_take_place = gets.to_i
 
     coach = find_coach(coach_number)
 
     if coach
-      coach.take_place(coach_take_place)
-      puts 'Место зарезервировано!'
-    else
-      puts 'Такого вагона не существует!'
+      if coach.type == 'cargo'
+        puts 'Введите количество занимаемого объема:'
+        coach_take_place = gets.to_i
+        coach.take_place(coach_take_place)
+        puts 'Место зарезервировано!'
+      elsif coach.type == 'passenger'
+        coach.take_place
+        puts 'Место зарезервировано!'
+      else
+        puts 'Такого вагона не существует!'
+      end
     end
   rescue RuntimeError => e
     puts e.message
@@ -294,7 +299,7 @@ class Railroad
     end
 
     train.each_coach do |coach|
-      puts "Номер вагона - #{coach.number}, тип вагона - #{coach.type}, свободного места - #{coach.free_place}, занятого места - #{coach.busy}."
+      puts "Номер вагона - #{coach.number}, тип вагона - #{coach.type}, свободного места - #{coach.free_place}, занятого места - #{coach.used_place}."
     end
   end
 

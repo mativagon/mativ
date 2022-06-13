@@ -14,7 +14,12 @@ class Coach
     @number = number
     @type = nil
     @capacity = capacity
+    @used_place = 0
     validate!
+  end
+
+  def free_place
+    @capacity - @used_place
   end
 
   protected
