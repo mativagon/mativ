@@ -359,4 +359,3 @@ class Railroad
     @railroad_trains.find { |train| train.number == number }
   end
 end
-
