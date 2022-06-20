@@ -3,11 +3,15 @@
 require_relative 'modules/manufacturer'
 require_relative 'modules/instance_counter'
 require_relative 'modules/validating'
+require_relative 'modules/accessors'
 
 class Train
   include Manufacturer
   include InstanceCounter
   include Validating
+  extend Accessors
+
+  NUMBER_SAMPLE = /^([a-z]|\d){3}-?([a-z]|\d){2}$/i.freeze
 
   attr_reader :coaches, :speed, :current_station, :type, :route, :number
 
@@ -16,8 +20,6 @@ class Train
 
   validate :number, :presence
   validate :number, :format, NUMBER_SAMPLE
-
-  NUMBER_SAMPLE = /^([a-z]|\d){3}-?([a-z]|\d){2}$/i.freeze
 
   def initialize(number)
     @number = number
